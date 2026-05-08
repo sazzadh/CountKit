@@ -32,7 +32,7 @@ Add this anywhere on your website:
   data-time="23:59:59"
 ></div>
 
-<script src="https://cdn.jsdelivr.net/gh/sazzadh/CountKit/CountKit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/sazzadh/CountKit@1.0/CountKit.min.js"></script>
 ```
 
 ---
@@ -87,7 +87,7 @@ Add this anywhere on your website:
   data-hide-ids="#hero,#popup"
 ></div>
 
-<script src="https://cdn.jsdelivr.net/gh/sazzadh/CountKit/CountKit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/sazzadh/CountKit@1.0/CountKit.min.js"></script>
 ```
 
 ---
@@ -103,7 +103,7 @@ Add this anywhere on your website:
 # Versioned CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/sazzadh/CountKit@1.0.0/CountKit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/sazzadh/CountKit@1.0/CountKit.min.js"></script>
 ```
 
 ---
