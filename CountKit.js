@@ -6,30 +6,6 @@
  *
  * Copyright (c) 2025 Sazzad Hussain
  * https://sazzadh.com
- *
- * Permission is hereby granted, free of charge,
- * to any person obtaining a copy of this software
- * and associated documentation files (the "Software"),
- * to deal in the Software without restriction,
- * including without limitation the rights to use,
- * copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software,
- * and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission
- * notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY
- * OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
- * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
- * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
- * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 (function () {
@@ -42,7 +18,7 @@
   const style = document.createElement("style");
 
   style.innerHTML = `
-  
+
     .countkit{
       display:flex;
       align-items:center;
@@ -121,7 +97,7 @@
   document.head.appendChild(style);
 
   // =========================================
-  // INIT ALL TIMERS
+  // INIT TIMERS
   // =========================================
   const timers = document.querySelectorAll(".countkit");
 
@@ -132,25 +108,28 @@
     // =========================================
     const config = {
 
-      // Date & Time
+      // Date
       date: timer.dataset.date || "2026-12-31",
+
+      // Time
       time: timer.dataset.time || "23:59:59",
 
-      // Styling
+      // Colors
       textColor: timer.dataset.textColor || "#222",
       labelColor: timer.dataset.labelColor || "#777",
       dividerColor: timer.dataset.dividerColor || "rgba(0,0,0,.15)",
 
+      // Sizes
       numberSize: timer.dataset.numberSize || "52",
       labelSize: timer.dataset.labelSize || "12",
       gap: timer.dataset.gap || "18",
 
-      // Expiry
+      // Expire
       hideOnEnd: timer.dataset.hideOnEnd !== "false",
 
       expiredText: timer.dataset.expiredText || "",
 
-      // Hide targets
+      // Hide elements
       hideIds: timer.dataset.hideIds
         ? timer.dataset.hideIds.split(",")
         : []
@@ -223,6 +202,8 @@
       `${config.date}T${config.time}`
     );
 
+    let timerInterval;
+
     // =========================================
     // UPDATE TIMER
     // =========================================
@@ -242,7 +223,7 @@
         timer.querySelector(".ck-minutes").textContent = "00";
         timer.querySelector(".ck-seconds").textContent = "00";
 
-        // Hide Timer
+        // Hide timer
         if (config.hideOnEnd) {
 
           if (config.expiredText) {
@@ -257,7 +238,7 @@
 
         }
 
-        // Hide Other Elements
+        // Hide target elements
         config.hideIds.forEach((selector) => {
 
           const el = document.querySelector(selector.trim());
@@ -268,7 +249,10 @@
 
         });
 
-        clearInterval(timerInterval);
+        // Clear interval safely
+        if (timerInterval) {
+          clearInterval(timerInterval);
+        }
 
         return;
       }
@@ -310,12 +294,21 @@
 
     }
 
-    // Initial render
+    // =========================================
+    // START TIMER
+    // =========================================
+    timerInterval = setInterval(updateTimer, 1000);
+
     updateTimer();
 
-    // Update every second
-    const timerInterval = setInterval(updateTimer, 1000);
-
   });
+
+  // =========================================
+  // CREDIT
+  // =========================================
+  console.log(
+    "%cCountKit.js by Sazzad Hussain — https://sazzadh.com",
+    "font-weight:bold;color:#555;"
+  );
 
 })();
