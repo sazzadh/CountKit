@@ -71,6 +71,137 @@ CountKit is a lightweight zero-dependency countdown timer widget that works with
 ></div>
 ```
 
+
+---
+
+# Complete Example
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>CountKit Demo</title>
+</head>
+<body>
+
+  <!-- COUNTKIT TIMER -->
+  <div
+    class="countkit"
+
+    data-date="2026-12-31"
+    data-time="23:59:59"
+
+    data-timezone="America/Los_Angeles"
+
+    data-number-size="72px"
+    data-label-size="14px"
+    data-gap="24px"
+    data-divider-height="80px"
+
+    data-mobile-number-size="28px"
+    data-mobile-label-size="9px"
+    data-mobile-gap="8px"
+    data-mobile-divider-height="30px"
+
+    data-text-color="#111111"
+    data-label-color="#777777"
+    data-divider-color="rgba(0,0,0,.2)"
+
+    data-show-labels="true"
+
+    data-hide-on-end="true"
+
+    data-expired-text="Offer Ended"
+
+    data-hide-ids="#hero-banner,#popup"
+
+    data-on-expire="timerExpired"
+  ></div>
+
+  <!-- EXTERNAL ELEMENTS -->
+  <div id="hero-banner">
+    Hero Banner
+  </div>
+
+  <div id="popup">
+    Popup Content
+  </div>
+
+  <!-- COUNTKIT -->
+  <script src="https://cdn.jsdelivr.net/gh/sazzadh/countkit/dist/countkit.min.js"></script>
+
+  <!-- CALLBACK -->
+  <script>
+
+    function timerExpired(timer){
+
+      console.log(
+        "Timer expired:",
+        timer
+      );
+
+    }
+
+    // CountKit Events
+    document.addEventListener(
+      "countkit:init",
+      (e) => {
+
+        console.log(
+          "Initialized:",
+          e.detail
+        );
+
+      }
+    );
+
+    document.addEventListener(
+      "countkit:tick",
+      (e) => {
+
+        console.log(
+          "Tick:",
+          e.detail
+        );
+
+      }
+    );
+
+    document.addEventListener(
+      "countkit:expired",
+      (e) => {
+
+        console.log(
+          "Expired:",
+          e.detail
+        );
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
+```
+
+---
+
+# What This Example Shows
+
+- Responsive timer
+- Desktop/mobile customization
+- Multiple style controls
+- Expired text replacement
+- External element hiding
+- Expiration callback
+- CountKit events
+- CDN usage
+- Production-ready setup
+
 ---
 
 # Options
