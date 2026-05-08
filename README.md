@@ -1,29 +1,30 @@
-# CountKit
+# CountKit.js
 
-Beautiful embeddable countdown timers for any website.
+Beautiful embeddable countdown timers.
 
-CountKit is a lightweight zero-dependency countdown widget that works with a single script tag.
+CountKit is a lightweight zero-dependency countdown timer widget that works with a single script tag.
 
 ---
 
 # Features
 
-- Easy embed
-- Zero dependencies
-- Auto-injected styles
-- Responsive layout
-- Multiple timers supported
-- Custom colors
-- Custom sizing
+- Multiple timers support
+- Unique isolated instances
+- Responsive controls
+- Mobile customization
 - Auto-hide on expiry
-- Lightweight
+- Expired text replacement
+- External element hiding
+- Mutation observer support
+- Dynamic content support
+- Public JS API
+- Custom events
+- Zero dependencies
 - CDN ready
 
 ---
 
 # Installation
-
-Add this anywhere on your website:
 
 ```html
 <div
@@ -32,12 +33,12 @@ Add this anywhere on your website:
   data-time="23:59:59"
 ></div>
 
-<script src="https://cdn.jsdelivr.net/gh/sazzadh/CountKit@1.0/CountKit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/sazzadh/countkit/dist/countkit.min.js"></script>
 ```
 
 ---
 
-# Basic Usage
+# Basic Example
 
 ```html
 <div
@@ -49,75 +50,89 @@ Add this anywhere on your website:
 
 ---
 
-# Options
-
-| Attribute | Description | Example |
-|---|---|---|
-| `data-date` | Target date | `2026-12-31` |
-| `data-time` | Target time | `23:59:59` |
-| `data-text-color` | Number color | `#222222` |
-| `data-label-color` | Label color | `#777777` |
-| `data-divider-color` | Divider color | `rgba(0,0,0,.15)` |
-| `data-number-size` | Number font size | `52` |
-| `data-label-size` | Label font size | `12` |
-| `data-gap` | Space between items | `18` |
-| `data-hide-on-end` | Hide timer on expiry | `true` |
-| `data-hide-ids` | Hide elements on expiry | `#hero,#banner` |
-
----
-
-# Advanced Example
+# Responsive Example
 
 ```html
 <div
   class="countkit"
 
-  data-date="2026-05-10"
+  data-date="2026-12-31"
   data-time="23:59:59"
 
-  data-text-color="#000"
-  data-label-color="#888"
+  data-number-size="72px"
+  data-label-size="14px"
+  data-gap="24px"
+  data-divider-height="80px"
 
-  data-number-size="60"
-  data-label-size="14"
-
-  data-gap="24"
-
-  data-hide-on-end="true"
-  data-hide-ids="#hero,#popup"
+  data-mobile-number-size="28px"
+  data-mobile-label-size="9px"
+  data-mobile-gap="8px"
+  data-mobile-divider-height="30px"
 ></div>
-
-<script src="https://cdn.jsdelivr.net/gh/sazzadh/CountKit@1.0/CountKit.min.js"></script>
 ```
 
 ---
 
-# CDN Usage
+# Options
 
-```html
-<script src="https://cdn.jsdelivr.net/gh/sazzadh/CountKit/CountKit.min.js"></script>
+| Attribute | Description |
+|---|---|
+| data-date | Target date |
+| data-time | Target time |
+| data-timezone | Timezone |
+| data-number-size | Desktop number size |
+| data-label-size | Desktop label size |
+| data-gap | Desktop gap |
+| data-divider-height | Desktop divider height |
+| data-mobile-number-size | Mobile number size |
+| data-mobile-label-size | Mobile label size |
+| data-mobile-gap | Mobile gap |
+| data-mobile-divider-height | Mobile divider height |
+| data-text-color | Number color |
+| data-label-color | Label color |
+| data-divider-color | Divider color |
+| data-hide-on-end | Hide timer on expiry |
+| data-expired-text | Replace timer text |
+| data-hide-ids | Hide external elements |
+| data-show-labels | Toggle labels |
+| data-on-expire | Expired callback |
+
+---
+
+# API
+
+```js
+CountKit.init();
+CountKit.refresh();
+CountKit.destroy(id);
 ```
 
 ---
 
-# Versioned CDN
+# Events
 
-```html
-<script src="https://cdn.jsdelivr.net/gh/sazzadh/CountKit@1.0/CountKit.min.js"></script>
+```js
+document.addEventListener(
+  "countkit:init",
+  (e) => console.log(e.detail)
+);
+
+document.addEventListener(
+  "countkit:tick",
+  (e) => console.log(e.detail)
+);
+
+document.addEventListener(
+  "countkit:expired",
+  (e) => console.log(e.detail)
+);
 ```
-
----
-
-# Browser Support
-
-- Chrome
-- Firefox
-- Safari
-- Edge
-- Mobile browsers
 
 ---
 
 # License
 
 MIT License
+
+Copyright (c) 2025 Sazzad Hussain  
+https://sazzadh.com
